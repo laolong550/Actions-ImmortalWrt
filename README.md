@@ -2,7 +2,7 @@
 
 - ImmortalWrt源码是[hanwckf/immortalwrt-mt798x](https://github.com/hanwckf/immortalwrt-mt798x)，MTK SDK，[作者介绍](https://cmi.hanwckf.top/p/immortalwrt-mt798x)。
 - Github Actions来自于[P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)，[中文教程](https://p3terx.com/archives/build-openwrt-with-github-actions.html)。
-- 编译目标为360 T7/T7U/T7M & WR30U/T/M
+- 原编译目标为360 T7/T7U/T7M & WR30U/T/M   已修改编译目标为H3C NX30 PRO  可直接执行
 
 ## Config文件生成参考
 
