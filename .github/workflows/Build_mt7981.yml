@@ -183,24 +183,19 @@ jobs:
       with:
         name: ImmortalWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
-
-    - name: Generate release tag
-      id: tag
-      if: env.UPLOAD_RELEASE == 'true' && steps.compile.outputs.status == 'success' && !cancelled()
+- name: Generate release tag
+      ...
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "## hanwckf's ImmortalWrt mt7981 Release $(date +"%Y.%m.%d-%H:%M")" >> release.txt
+        echo "## hanwckf's ImmortalWrt h3c_nx30pro Release $(date +"%Y.%m.%d-%H:%M")" >> release.txt
         echo "- factory.bin" >> release.txt
-        echo "  360T7-md5: $(md5sum ${{ env.FIRMWARE }}/*360-t7*factory.bin | cut -d" " -f1)" >> release.txt
-        echo "  WR30U-112m-md5: $(md5sum ${{ env.FIRMWARE }}/*112m*factory.bin | cut -d" " -f1)" >> release.txt
+        echo "  h3c_nx30pro-md5: $(md5sum ${{ env.FIRMWARE }}*factory.bin | cut -d" " -f1)" >> release.txt
         echo "- squashfs-sysupgrade.bin" >> release.txt
-        echo "  360T7-md5: $(md5sum ${{ env.FIRMWARE }}/*360-t7*sysupgrade.bin | cut -d" " -f1)" >> release.txt
-        echo "  360T7-sha256: $(grep ".*360-t7.*sysupgrade.bin" ${{ env.FIRMWARE }}/sha256sums | grep -oE "\w{64}")" >> release.txt
-        echo "  WR30U-112m-md5: $(md5sum ${{ env.FIRMWARE }}/*112m*sysupgrade.bin | cut -d" " -f1)" >> release.txt
-        echo "  WR30U-112m-sha256: $(grep ".*112m.*sysupgrade.bin" ${{ env.FIRMWARE }}/sha256sums | grep -oE "\w{64}")" >> release.txt
-        echo "  WR30U-stock-md5: $(md5sum ${{ env.FIRMWARE }}/*stock*sysupgrade.bin | cut -d" " -f1)" >> release.txt
-        echo "  WR30U-stock-sha256: $(grep ".*stock.*sysupgrade.bin" ${{ env.FIRMWARE }}/sha256sums | grep -oE "\w{64}")" >> release.txt
+        echo "  h3c_nx30pro-md5: $(md5sum ${{ env.FIRMWARE }}*sysupgrade.bin | cut -d" " -f1)" >> release.txt
+        echo "  h3c_nx30pro-sha256: $(grep "h3c_nx30pro.*sysupgrade.bin" ${{ env.FIRMWARE }}/sha256sums | grep -oE "\w{64}")" >> release.txt
+        echo "status=success" >> $GITHUB_OUTPUT
+        mv ImmortalWrt/.config ImmortalWrt/build.config
         echo "status=success" >> $GITHUB_OUTPUT
         mv ImmortalWrt/.config ImmortalWrt/build.config
 
