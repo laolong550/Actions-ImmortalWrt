@@ -11,6 +11,8 @@
 #
 
 echo "src-git helloworld https://github.com/fw876/helloworld.git;master" >> "feeds.conf.default"
+echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
+echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 #echo "src-git customsd https://github.com/Ljzkirito/smartdns-openwrt.git;Release46-conf" >> "feeds.conf.default"
 
 # Replace /lib/netifd/ppp-down
