@@ -73,3 +73,8 @@ sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generat
 #do
 #	[ -n "$(grep "upx" "$a")" ] && sed -i "/upx/d" "$a"
 #done
+
+
+# Replace luci-app-passwall with custom feed version (with SingBox support)
+./scripts/feeds uninstall luci-app-passwall
+./scripts/feeds install -f -p passwall luci-app-passwall
